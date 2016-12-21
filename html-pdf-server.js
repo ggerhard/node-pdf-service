@@ -19,7 +19,7 @@ app.set('view engine', 'jade')
 // route: get: /
 app.get('/', function (req, res) {
   res.render('index',
-    { title : 'NodeJS PhantomJS Screenshot' }
+    { title : 'NodeJS PhantomJS HTML to PDF' }
   )
 });
 
@@ -33,10 +33,9 @@ app.post('/process_url', function (req, res) {
     res.end("404 Not Found");
   }
 
-  // phantomjs PDF creation
+// phantomjs PDF creation
   
 console.log('Loading a web page');
-
 
 var phantom = require("phantom");
 var _ph, _page, _outObj;
@@ -68,10 +67,10 @@ phantom.create().then(ph => {
     if (status == "success") {
           // put PDF in public directory
           var pdf_file_name = url_to_process.replace(/\W/g, '_') + ".pdf"
-          var image_path = public_dir + "/" + pdf_file_name
-          console.log(image_path);
-          _page.render(image_path).then(function() {
-              // redirect to static image
+          var pdf_path = public_dir + "/" + pdf_file_name
+          console.log(pdf_path);
+          _page.render(pdf_path).then(function() {
+              // redirect to PDF
             res.redirect('/'+pdf_file_name);
             _page.close();
       _ph.exit();
@@ -83,9 +82,7 @@ phantom.create().then(ph => {
          _page.close();
         _ph.exit();
       }
-
   }).catch(e => console.log(e));
-
 });
 
 
