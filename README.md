@@ -1,4 +1,4 @@
-# NodeJS Sceenshot Microservice
+# NodeJS HTML to PDF Microservice
 
 A Microservice to create PDF from HTM / URL.
 

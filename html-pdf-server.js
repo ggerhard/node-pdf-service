@@ -66,13 +66,13 @@ phantom.create().then(ph => {
     console.log(status);
      
     if (status == "success") {
-          // put images in public directory
-          var image_file_name = url_to_process.replace(/\W/g, '_') + ".pdf"
-          var image_path = public_dir + "/" + image_file_name
+          // put PDF in public directory
+          var pdf_file_name = url_to_process.replace(/\W/g, '_') + ".pdf"
+          var image_path = public_dir + "/" + pdf_file_name
           console.log(image_path);
           _page.render(image_path).then(function() {
               // redirect to static image
-            res.redirect('/'+image_file_name);
+            res.redirect('/'+pdf_file_name);
             _page.close();
       _ph.exit();
           });      
