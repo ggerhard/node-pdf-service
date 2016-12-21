@@ -1,0 +1,14 @@
+{
+  "name": "node-pdf",
+  "description": "phantomjs pdf generator service",
+  "version": "0.0.1",
+  "private": true,
+  	"scripts": {
+		"start": "node html-pdf-server.js"
+	},
+  "dependencies": {
+    "express": "3.x",
+    "phantom": "*",
+    "jade": "*"
+  }
+}
