@@ -65,16 +65,19 @@ phantom.create().then(ph => {
     console.log(status);
      
     if (status == "success") {
-          // put PDF in public directory
-          var pdf_file_name = url_to_process.replace(/\W/g, '_') + ".pdf"
-          var pdf_path = public_dir + "/" + pdf_file_name
-          console.log(pdf_path);
-          _page.render(pdf_path).then(function() {
-              // redirect to PDF
-            res.redirect('/'+pdf_file_name);
-            _page.close();
-      _ph.exit();
-          });      
+        // put PDF in public directory
+        var pdf_file_name = url_to_process.replace(/\W/g, '_') + ".pdf"
+        var pdf_path = public_dir + "/" + pdf_file_name
+        console.log('created ' + pdf_path);
+        _page.render(pdf_path).then(function() {
+          // Download PDF
+          res.setHeader('Content-disposition', 'attachment; filename=' + pdf_file_name);
+          res.setHeader('Content-type', 'application/pdf');
+          res.download(pdf_path);
+
+          _page.close();
+          _ph.exit();
+        });      
       }
       else {
         res.writeHead(404, {'Content-Type': 'text/plain'});
@@ -90,3 +93,4 @@ phantom.create().then(ph => {
 var server = app.listen(3000, function() {
   console.log('Listening on port %d', server.address().port);
 });
+
