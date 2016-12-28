@@ -2,8 +2,6 @@
 
 A Microservice to create PDF from HTM / URL.
 
-*Work in Progress!*
-
 ## Usage as Local Service
 
 Install dependencies with npm:
@@ -14,10 +12,11 @@ Starting the server:
 
     node html-pdf-server.js
 
-The server will run on *http://localhost:3000/*. A webform for testing is included. Submit a URL and the browser will start to download the resulting PDF document:
+The server will run on *http://localhost:3000/* per default. A webform for testing is included. Submit a URL and the browser will start to download the resulting PDF document:
+
 ![node-pdf-screenshot](resources/node-pdf-screenshot.png)
 
-To access the service directly, send a POST request to *http://localhost:3000/process_url*
+To access the service directly, e.g. from a service or backend, send a POST request to *http://localhost:3000/process_url*
 
     curl 'http://localhost:3000/process_url' --data 'url=https://github.com/ggerhard/node-pdf-service' -o output.pdf
 
